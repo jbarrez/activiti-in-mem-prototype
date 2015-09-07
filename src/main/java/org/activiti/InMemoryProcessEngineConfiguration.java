@@ -26,30 +26,13 @@ import org.activiti.transaction.NoopTransactionContextFactory;
 public class InMemoryProcessEngineConfiguration extends ProcessEngineConfigurationImpl {
   
   public InMemoryProcessEngineConfiguration() {
-    
-    this.validateSchemaOnBoot = false;
-    
+    this.usingRelationalDatabase = false;
     this.idGenerator = new StrongUuidGenerator();
-    
-    this.databaseSchemaUpdate = null; // Setting it to null avoid the on-boot check for schema
-    this.jdbcDriver = null;
-    this.jdbcUrl = null;
-    this.jdbcUsername = null;
-    this.jdbcPassword = null;
-    this.dataSource = null;
   }
 
   @Override
   protected CommandInterceptor createTransactionInterceptor() {
     return null;
-  }
-  
-  @Override
-  public void initDatabaseType() {
-  }
-  
-  @Override
-  protected void initSqlSessionFactory() {
   }
   
   @Override
