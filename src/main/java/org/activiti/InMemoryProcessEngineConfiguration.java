@@ -1,14 +1,8 @@
 package org.activiti;
 
-import java.util.HashMap;
-
 import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.interceptor.CommandInterceptor;
-import org.activiti.engine.impl.interceptor.SessionFactory;
-import org.activiti.engine.impl.persistence.GenericManagerFactory;
 import org.activiti.engine.impl.persistence.StrongUuidGenerator;
-import org.activiti.engine.impl.persistence.cache.EntityCache;
-import org.activiti.engine.impl.persistence.cache.EntityCacheImpl;
 import org.activiti.manager.InMemoryDeploymentDataManager;
 import org.activiti.manager.InMemoryEventSubscriptionDataManager;
 import org.activiti.manager.InMemoryExecutionDataManager;
@@ -39,23 +33,6 @@ public class InMemoryProcessEngineConfiguration extends ProcessEngineConfigurati
   protected void initTransactionContextFactory() {
     if (transactionContextFactory == null) {
       transactionContextFactory = new NoopTransactionContextFactory();
-    }
-  }
-  
-  protected void initSessionFactories() {
-    if (sessionFactories == null) {
-      
-      sessionFactories = new HashMap<Class<?>, SessionFactory>();
-      
-      // remove dbsqlsession
-      
-      addSessionFactory(new GenericManagerFactory(EntityCache.class, EntityCacheImpl.class));
-    }
-
-    if (customSessionFactories != null) {
-      for (SessionFactory sessionFactory : customSessionFactories) {
-        addSessionFactory(sessionFactory);
-      }
     }
   }
   
