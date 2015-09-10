@@ -7,8 +7,11 @@ import java.util.List;
 import org.activiti.engine.impl.JobQueryImpl;
 import org.activiti.engine.impl.Page;
 import org.activiti.engine.impl.persistence.entity.JobEntity;
+import org.activiti.engine.impl.persistence.entity.MessageEntity;
+import org.activiti.engine.impl.persistence.entity.MessageEntityImpl;
 import org.activiti.engine.impl.persistence.entity.ProcessDefinitionEntity;
 import org.activiti.engine.impl.persistence.entity.TimerEntity;
+import org.activiti.engine.impl.persistence.entity.TimerEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.JobDataManager;
 import org.activiti.engine.runtime.Job;
 
@@ -17,6 +20,19 @@ import org.activiti.engine.runtime.Job;
  */
 public class InMemoryJobDataManager extends AbstractInMemoryDataManager<JobEntity> implements JobDataManager {
 
+  public MessageEntity createMessage() {
+    return new MessageEntityImpl();
+  }
+  
+  public TimerEntity createTimer() {
+    return new TimerEntityImpl();
+  }
+  
+  public JobEntity create() {
+    // Superclass cannot be created
+    throw new UnsupportedOperationException();
+  }
+  
   public List<JobEntity> findNextJobsToExecute(Page page) {
     throw new UnsupportedOperationException();
   }

@@ -10,6 +10,7 @@ import org.activiti.engine.impl.ExecutionQueryImpl;
 import org.activiti.engine.impl.Page;
 import org.activiti.engine.impl.ProcessInstanceQueryImpl;
 import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
+import org.activiti.engine.impl.persistence.entity.ExecutionEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.ExecutionDataManager;
 import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -18,6 +19,10 @@ import org.activiti.engine.runtime.ProcessInstance;
  * @author Joram Barrez
  */
 public class InMemoryExecutionDataManager extends AbstractInMemoryDataManager<ExecutionEntity> implements ExecutionDataManager {
+  
+  public ExecutionEntity create() {
+    return new ExecutionEntityImpl();
+  }
   
   public ExecutionEntity findSubProcessInstanceBySuperExecutionId(String superExecutionId) {
     for (ExecutionEntity executionEntity : entities.values()) {

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.activiti.engine.impl.DeploymentQueryImpl;
 import org.activiti.engine.impl.Page;
 import org.activiti.engine.impl.persistence.entity.DeploymentEntity;
+import org.activiti.engine.impl.persistence.entity.DeploymentEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.DeploymentDataManager;
 import org.activiti.engine.repository.Deployment;
 
@@ -13,6 +14,10 @@ import org.activiti.engine.repository.Deployment;
  * @author Joram Barrez
  */
 public class InMemoryDeploymentDataManager extends AbstractInMemoryDataManager<DeploymentEntity> implements DeploymentDataManager {
+  
+  public DeploymentEntity create() {
+    return new DeploymentEntityImpl();
+  }
   
   public DeploymentEntity findLatestDeploymentByName(String deploymentName) {
     throw new UnsupportedOperationException();

@@ -5,7 +5,10 @@ import java.util.Map;
 
 import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.impl.HistoricTaskInstanceQueryImpl;
+import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 import org.activiti.engine.impl.persistence.entity.HistoricTaskInstanceEntity;
+import org.activiti.engine.impl.persistence.entity.HistoricTaskInstanceEntityImpl;
+import org.activiti.engine.impl.persistence.entity.TaskEntity;
 import org.activiti.engine.impl.persistence.entity.data.HistoricTaskInstanceDataManager;
 
 /**
@@ -13,6 +16,15 @@ import org.activiti.engine.impl.persistence.entity.data.HistoricTaskInstanceData
  */
 public class InMemoryHistoricTaskInstanceDataManager extends AbstractInMemoryDataManager<HistoricTaskInstanceEntity> implements HistoricTaskInstanceDataManager {
 
+  public HistoricTaskInstanceEntity create() {
+    return new HistoricTaskInstanceEntityImpl();
+  }
+  
+  public HistoricTaskInstanceEntity create(TaskEntity task, ExecutionEntity execution) {
+    return new HistoricTaskInstanceEntityImpl(task, execution);
+  }
+
+  
   public List<HistoricTaskInstanceEntity> findHistoricTaskInstanceByProcessInstanceId(String processInstanceId) {
     throw new UnsupportedOperationException();
   }

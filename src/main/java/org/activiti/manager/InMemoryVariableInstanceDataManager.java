@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.activiti.engine.impl.persistence.entity.VariableInstanceEntity;
+import org.activiti.engine.impl.persistence.entity.VariableInstanceEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.VariableInstanceDataManager;
 
 /**
@@ -12,6 +13,10 @@ import org.activiti.engine.impl.persistence.entity.data.VariableInstanceDataMana
  */
 public class InMemoryVariableInstanceDataManager extends AbstractInMemoryDataManager<VariableInstanceEntity> implements VariableInstanceDataManager {
 
+  public VariableInstanceEntity create() {
+    return new VariableInstanceEntityImpl();
+  }
+  
   public List<VariableInstanceEntity> findVariableInstancesByTaskId(String taskId) {
     List<VariableInstanceEntity> results = new ArrayList<VariableInstanceEntity>();
     for (VariableInstanceEntity variableInstanceEntity : entities.values()) {

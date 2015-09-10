@@ -8,6 +8,7 @@ import org.activiti.engine.history.HistoricActivityInstance;
 import org.activiti.engine.impl.HistoricActivityInstanceQueryImpl;
 import org.activiti.engine.impl.Page;
 import org.activiti.engine.impl.persistence.entity.HistoricActivityInstanceEntity;
+import org.activiti.engine.impl.persistence.entity.HistoricActivityInstanceEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.HistoricActivityInstanceDataManager;
 
 /**
@@ -15,6 +16,10 @@ import org.activiti.engine.impl.persistence.entity.data.HistoricActivityInstance
  */
 public class InMemoryHistoricActivityInstanceDataManager extends AbstractInMemoryDataManager<HistoricActivityInstanceEntity> implements HistoricActivityInstanceDataManager {
 
+  public HistoricActivityInstanceEntity create() {
+    return new HistoricActivityInstanceEntityImpl();
+  }
+  
   public List<HistoricActivityInstanceEntity> findUnfinishedHistoricActivityInstancesByExecutionAndActivityId(String executionId, String activityId) {
     List<HistoricActivityInstanceEntity> results = new ArrayList<HistoricActivityInstanceEntity>();
     for (HistoricActivityInstanceEntity historicActivityInstanceEntity : entities.values()) {

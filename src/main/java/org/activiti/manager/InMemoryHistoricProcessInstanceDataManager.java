@@ -5,7 +5,9 @@ import java.util.Map;
 
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.impl.HistoricProcessInstanceQueryImpl;
+import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 import org.activiti.engine.impl.persistence.entity.HistoricProcessInstanceEntity;
+import org.activiti.engine.impl.persistence.entity.HistoricProcessInstanceEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.HistoricProcessInstanceDataManager;
 
 /**
@@ -13,6 +15,14 @@ import org.activiti.engine.impl.persistence.entity.data.HistoricProcessInstanceD
  */
 public class InMemoryHistoricProcessInstanceDataManager extends AbstractInMemoryDataManager<HistoricProcessInstanceEntity> implements HistoricProcessInstanceDataManager {
 
+  public HistoricProcessInstanceEntity create() {
+    return new HistoricProcessInstanceEntityImpl();
+  }
+  
+  public HistoricProcessInstanceEntity create(ExecutionEntity processInstanceExecutionEntity) {
+    return new HistoricProcessInstanceEntityImpl();
+  }
+  
   public List<String> findHistoricProcessInstanceIdsByProcessDefinitionId(String processDefinitionId) {
     throw new UnsupportedOperationException();
   }
@@ -65,7 +75,6 @@ public class InMemoryHistoricProcessInstanceDataManager extends AbstractInMemory
   public long findHistoricProcessInstanceCountByNativeQuery(Map<String, Object> parameterMap) {
     throw new UnsupportedOperationException();
   }
-
 
 
 }

@@ -3,6 +3,7 @@ package org.activiti.manager;
 import java.util.List;
 
 import org.activiti.engine.impl.persistence.entity.ResourceEntity;
+import org.activiti.engine.impl.persistence.entity.ResourceEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.ResourceDataManager;
 
 /**
@@ -10,6 +11,10 @@ import org.activiti.engine.impl.persistence.entity.data.ResourceDataManager;
  */
 public class InMemoryResourceDataManager extends AbstractInMemoryDataManager<ResourceEntity> implements ResourceDataManager {
 
+  public ResourceEntity create() {
+    return new ResourceEntityImpl();
+  }
+  
   public void deleteResourcesByDeploymentId(String deploymentId) {
     throw new UnsupportedOperationException();
   }

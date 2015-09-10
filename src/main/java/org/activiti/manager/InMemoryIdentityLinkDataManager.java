@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.activiti.engine.impl.persistence.entity.IdentityLinkEntity;
+import org.activiti.engine.impl.persistence.entity.IdentityLinkEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.IdentityLinkDataManager;
 
 /**
@@ -11,6 +12,10 @@ import org.activiti.engine.impl.persistence.entity.data.IdentityLinkDataManager;
  */
 public class InMemoryIdentityLinkDataManager extends AbstractInMemoryDataManager<IdentityLinkEntity> implements IdentityLinkDataManager {
 
+  public IdentityLinkEntity create() {
+    return new IdentityLinkEntityImpl();
+  }
+  
   public List<IdentityLinkEntity> findIdentityLinksByTaskId(String taskId) {
     List<IdentityLinkEntity> results = new ArrayList<IdentityLinkEntity>();
     for (IdentityLinkEntity identityLinkEntity : entities.values()) {

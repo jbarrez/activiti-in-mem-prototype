@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.activiti.engine.impl.Page;
 import org.activiti.engine.impl.ProcessDefinitionQueryImpl;
 import org.activiti.engine.impl.persistence.entity.ProcessDefinitionEntity;
+import org.activiti.engine.impl.persistence.entity.ProcessDefinitionEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.ProcessDefinitionDataManager;
 import org.activiti.engine.repository.ProcessDefinition;
 
@@ -17,6 +18,10 @@ import org.activiti.engine.repository.ProcessDefinition;
 public class InMemoryProcessDefinitionDataManager extends AbstractInMemoryDataManager<ProcessDefinitionEntity> implements ProcessDefinitionDataManager {
 
   protected Map<String, List<ProcessDefinitionEntity>> processDefinitionsByKeyMap = new ConcurrentHashMap<String, List<ProcessDefinitionEntity>>();
+  
+  public ProcessDefinitionEntity create() {
+    return new ProcessDefinitionEntityImpl();
+  }
   
   @Override
   public void insert(ProcessDefinitionEntity entity) {

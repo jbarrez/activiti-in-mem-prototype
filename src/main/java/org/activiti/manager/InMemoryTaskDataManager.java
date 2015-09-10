@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.activiti.engine.impl.TaskQueryImpl;
 import org.activiti.engine.impl.persistence.entity.TaskEntity;
+import org.activiti.engine.impl.persistence.entity.TaskEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.TaskDataManager;
 import org.activiti.engine.task.Task;
 
@@ -14,6 +15,10 @@ import org.activiti.engine.task.Task;
  */
 public class InMemoryTaskDataManager extends AbstractInMemoryDataManager<TaskEntity> implements TaskDataManager {
 
+  public TaskEntity create() {
+    return new TaskEntityImpl();
+  }
+  
   public List<TaskEntity> findTasksByExecutionId(String executionId) {
     List<TaskEntity> results = new ArrayList<TaskEntity>();
     for (TaskEntity taskEntity : entities.values()) {

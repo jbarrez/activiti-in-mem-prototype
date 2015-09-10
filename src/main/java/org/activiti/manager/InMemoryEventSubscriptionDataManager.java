@@ -5,9 +5,13 @@ import java.util.List;
 
 import org.activiti.engine.impl.EventSubscriptionQueryImpl;
 import org.activiti.engine.impl.Page;
+import org.activiti.engine.impl.persistence.entity.CompensateEventSubscriptionEntity;
+import org.activiti.engine.impl.persistence.entity.CompensateEventSubscriptionEntityImpl;
 import org.activiti.engine.impl.persistence.entity.EventSubscriptionEntity;
 import org.activiti.engine.impl.persistence.entity.MessageEventSubscriptionEntity;
+import org.activiti.engine.impl.persistence.entity.MessageEventSubscriptionEntityImpl;
 import org.activiti.engine.impl.persistence.entity.SignalEventSubscriptionEntity;
+import org.activiti.engine.impl.persistence.entity.SignalEventSubscriptionEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.EventSubscriptionDataManager;
 
 /**
@@ -15,6 +19,23 @@ import org.activiti.engine.impl.persistence.entity.data.EventSubscriptionDataMan
  */
 public class InMemoryEventSubscriptionDataManager extends AbstractInMemoryDataManager<EventSubscriptionEntity> implements EventSubscriptionDataManager {
 
+  public EventSubscriptionEntity create() {
+    // only allowed to create subclasses
+    throw new UnsupportedOperationException();
+  }
+  
+  public CompensateEventSubscriptionEntity createCompensateEventSubscription() {
+    return new CompensateEventSubscriptionEntityImpl();
+  }
+  
+  public MessageEventSubscriptionEntity createMessageEventSubscription() {
+    return new MessageEventSubscriptionEntityImpl();
+  }
+  
+  public SignalEventSubscriptionEntity createSignalEventSubscription() {
+    return new SignalEventSubscriptionEntityImpl();
+  }
+  
   public long findEventSubscriptionCountByQueryCriteria(EventSubscriptionQueryImpl eventSubscriptionQueryImpl) {
     throw new UnsupportedOperationException();
   }
