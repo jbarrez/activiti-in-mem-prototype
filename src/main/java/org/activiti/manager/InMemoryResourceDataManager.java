@@ -2,6 +2,7 @@ package org.activiti.manager;
 
 import java.util.List;
 
+import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.persistence.entity.ResourceEntity;
 import org.activiti.engine.impl.persistence.entity.ResourceEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.ResourceDataManager;
@@ -10,6 +11,10 @@ import org.activiti.engine.impl.persistence.entity.data.ResourceDataManager;
  * @author Joram Barrez
  */
 public class InMemoryResourceDataManager extends AbstractInMemoryDataManager<ResourceEntity> implements ResourceDataManager {
+
+  public InMemoryResourceDataManager(ProcessEngineConfigurationImpl processEngineConfiguration) {
+    super(processEngineConfiguration);
+  }
 
   public ResourceEntity create() {
     return new ResourceEntityImpl();

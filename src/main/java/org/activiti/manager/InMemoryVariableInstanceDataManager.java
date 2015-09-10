@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.persistence.entity.VariableInstanceEntity;
 import org.activiti.engine.impl.persistence.entity.VariableInstanceEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.VariableInstanceDataManager;
@@ -12,6 +13,10 @@ import org.activiti.engine.impl.persistence.entity.data.VariableInstanceDataMana
  * @author Joram Barrez
  */
 public class InMemoryVariableInstanceDataManager extends AbstractInMemoryDataManager<VariableInstanceEntity> implements VariableInstanceDataManager {
+
+  public InMemoryVariableInstanceDataManager(ProcessEngineConfigurationImpl processEngineConfiguration) {
+    super(processEngineConfiguration);
+  }
 
   public VariableInstanceEntity create() {
     return new VariableInstanceEntityImpl();

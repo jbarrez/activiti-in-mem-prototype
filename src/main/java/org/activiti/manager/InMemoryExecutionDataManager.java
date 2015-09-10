@@ -9,6 +9,7 @@ import java.util.Map;
 import org.activiti.engine.impl.ExecutionQueryImpl;
 import org.activiti.engine.impl.Page;
 import org.activiti.engine.impl.ProcessInstanceQueryImpl;
+import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 import org.activiti.engine.impl.persistence.entity.ExecutionEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.ExecutionDataManager;
@@ -20,6 +21,10 @@ import org.activiti.engine.runtime.ProcessInstance;
  */
 public class InMemoryExecutionDataManager extends AbstractInMemoryDataManager<ExecutionEntity> implements ExecutionDataManager {
   
+  public InMemoryExecutionDataManager(ProcessEngineConfigurationImpl processEngineConfiguration) {
+    super(processEngineConfiguration);
+  }
+
   public ExecutionEntity create() {
     return new ExecutionEntityImpl();
   }

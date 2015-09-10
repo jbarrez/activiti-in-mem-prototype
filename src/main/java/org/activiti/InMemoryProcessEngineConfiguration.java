@@ -39,18 +39,18 @@ public class InMemoryProcessEngineConfiguration extends ProcessEngineConfigurati
   @Override
   protected void initDataManagers() {
     
-    this.deploymentDataManager = new InMemoryDeploymentDataManager();
-    this.resourceDataManager = new InMemoryResourceDataManager();
-    this.processDefinitionDataManager = new InMemoryProcessDefinitionDataManager();
-    this.jobDataManager = new InMemoryJobDataManager();
-    this.executionDataManager = new InMemoryExecutionDataManager();
-    this.historicProcessInstanceDataManager = new InMemoryHistoricProcessInstanceDataManager();
-    this.historicActivityInstanceDataManager = new InMemoryHistoricActivityInstanceDataManager();
-    this.taskDataManager = new InMemoryTaskDataManager();
-    this.historicTaskInstanceDataManager = new InMemoryHistoricTaskInstanceDataManager();
-    this.identityLinkDataManager = new InMemoryIdentityLinkDataManager();
-    this.variableInstanceDataManager = new InMemoryVariableInstanceDataManager();
-    this.eventSubscriptionDataManager = new InMemoryEventSubscriptionDataManager();
+    this.deploymentDataManager = new InMemoryDeploymentDataManager(this);
+    this.resourceDataManager = new InMemoryResourceDataManager(this);
+    this.processDefinitionDataManager = new InMemoryProcessDefinitionDataManager(this);
+    this.jobDataManager = new InMemoryJobDataManager(this);
+    this.executionDataManager = new InMemoryExecutionDataManager(this);
+    this.historicProcessInstanceDataManager = new InMemoryHistoricProcessInstanceDataManager(this);
+    this.historicActivityInstanceDataManager = new InMemoryHistoricActivityInstanceDataManager(this);
+    this.taskDataManager = new InMemoryTaskDataManager(this);
+    this.historicTaskInstanceDataManager = new InMemoryHistoricTaskInstanceDataManager(this);
+    this.identityLinkDataManager = new InMemoryIdentityLinkDataManager(this);
+    this.variableInstanceDataManager = new InMemoryVariableInstanceDataManager(this);
+    this.eventSubscriptionDataManager = new InMemoryEventSubscriptionDataManager(this);
     
   }
 

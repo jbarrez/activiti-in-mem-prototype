@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.impl.HistoricTaskInstanceQueryImpl;
+import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 import org.activiti.engine.impl.persistence.entity.HistoricTaskInstanceEntity;
 import org.activiti.engine.impl.persistence.entity.HistoricTaskInstanceEntityImpl;
@@ -15,6 +16,10 @@ import org.activiti.engine.impl.persistence.entity.data.HistoricTaskInstanceData
  * @author Joram Barrez
  */
 public class InMemoryHistoricTaskInstanceDataManager extends AbstractInMemoryDataManager<HistoricTaskInstanceEntity> implements HistoricTaskInstanceDataManager {
+
+  public InMemoryHistoricTaskInstanceDataManager(ProcessEngineConfigurationImpl processEngineConfiguration) {
+    super(processEngineConfiguration);
+  }
 
   public HistoricTaskInstanceEntity create() {
     return new HistoricTaskInstanceEntityImpl();

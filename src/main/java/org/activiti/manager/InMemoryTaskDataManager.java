@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.activiti.engine.impl.TaskQueryImpl;
+import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.persistence.entity.TaskEntity;
 import org.activiti.engine.impl.persistence.entity.TaskEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.TaskDataManager;
@@ -14,6 +15,10 @@ import org.activiti.engine.task.Task;
  * @author Joram Barrez
  */
 public class InMemoryTaskDataManager extends AbstractInMemoryDataManager<TaskEntity> implements TaskDataManager {
+
+  public InMemoryTaskDataManager(ProcessEngineConfigurationImpl processEngineConfiguration) {
+    super(processEngineConfiguration);
+  }
 
   public TaskEntity create() {
     return new TaskEntityImpl();

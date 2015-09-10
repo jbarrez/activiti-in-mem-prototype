@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.activiti.engine.impl.DeploymentQueryImpl;
 import org.activiti.engine.impl.Page;
+import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.persistence.entity.DeploymentEntity;
 import org.activiti.engine.impl.persistence.entity.DeploymentEntityImpl;
 import org.activiti.engine.impl.persistence.entity.data.DeploymentDataManager;
@@ -15,6 +16,10 @@ import org.activiti.engine.repository.Deployment;
  */
 public class InMemoryDeploymentDataManager extends AbstractInMemoryDataManager<DeploymentEntity> implements DeploymentDataManager {
   
+  public InMemoryDeploymentDataManager(ProcessEngineConfigurationImpl processEngineConfiguration) {
+    super(processEngineConfiguration);
+  }
+
   public DeploymentEntity create() {
     return new DeploymentEntityImpl();
   }

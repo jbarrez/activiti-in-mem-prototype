@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.activiti.engine.impl.EventSubscriptionQueryImpl;
 import org.activiti.engine.impl.Page;
+import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.persistence.entity.CompensateEventSubscriptionEntity;
 import org.activiti.engine.impl.persistence.entity.CompensateEventSubscriptionEntityImpl;
 import org.activiti.engine.impl.persistence.entity.EventSubscriptionEntity;
@@ -18,6 +19,10 @@ import org.activiti.engine.impl.persistence.entity.data.EventSubscriptionDataMan
  * @author Joram Barrez
  */
 public class InMemoryEventSubscriptionDataManager extends AbstractInMemoryDataManager<EventSubscriptionEntity> implements EventSubscriptionDataManager {
+
+  public InMemoryEventSubscriptionDataManager(ProcessEngineConfigurationImpl processEngineConfiguration) {
+    super(processEngineConfiguration);
+  }
 
   public EventSubscriptionEntity create() {
     // only allowed to create subclasses

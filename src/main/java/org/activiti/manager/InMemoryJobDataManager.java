@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.activiti.engine.impl.JobQueryImpl;
 import org.activiti.engine.impl.Page;
+import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.persistence.entity.JobEntity;
 import org.activiti.engine.impl.persistence.entity.MessageEntity;
 import org.activiti.engine.impl.persistence.entity.MessageEntityImpl;
@@ -19,6 +20,10 @@ import org.activiti.engine.runtime.Job;
  * @author Joram Barrez
  */
 public class InMemoryJobDataManager extends AbstractInMemoryDataManager<JobEntity> implements JobDataManager {
+
+  public InMemoryJobDataManager(ProcessEngineConfigurationImpl processEngineConfiguration) {
+    super(processEngineConfiguration);
+  }
 
   public MessageEntity createMessage() {
     return new MessageEntityImpl();
