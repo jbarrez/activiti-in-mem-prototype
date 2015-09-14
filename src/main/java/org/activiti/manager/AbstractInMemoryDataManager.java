@@ -31,7 +31,13 @@ public abstract class AbstractInMemoryDataManager<EntityImpl extends Entity> ext
   }
 
   public EntityImpl update(EntityImpl entity) {
-    throw new UnsupportedOperationException();
+    EntityImpl matchingEntity = entities.get(entity.getId());
+    if (matchingEntity != null) {
+      entities.put(entity.getId(), entity);
+      return entity;
+    } else {
+      return null;
+    }
   }
 
   public void delete(String id) {

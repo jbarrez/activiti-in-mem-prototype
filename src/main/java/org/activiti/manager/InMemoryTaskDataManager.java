@@ -24,6 +24,10 @@ public class InMemoryTaskDataManager extends AbstractInMemoryDataManager<TaskEnt
     return new TaskEntityImpl();
   }
   
+  public TaskEntity findById(String taskId, boolean checkCache) {
+    return findById(taskId);
+  }
+  
   public List<TaskEntity> findTasksByExecutionId(String executionId) {
     List<TaskEntity> results = new ArrayList<TaskEntity>();
     for (TaskEntity taskEntity : entities.values()) {
